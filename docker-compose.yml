@@ -35,11 +35,8 @@ services:
     ports:
     - 3000:3000
     build: ./grafana
-    #volumes:
-    #- grafanadata:/var/lib/grafana
     depends_on:
       influxdb:
         condition: service_healthy
 volumes:
   influxdata:
-  #grafanadata:
