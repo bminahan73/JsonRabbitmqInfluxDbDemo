@@ -43,7 +43,7 @@ time                duration host         remoteEndpoint_port timestamp
 ```
 
 ### grafana
-this is the frontend for writing queries and showing results in a pretty dashboard. You can access this [here](http://localhost:3000). Username and password are default (admin/password). One data source is created pointing to influxdb. One [sample dashboard](http://localhost:3000/d/mt6nBMdWz/test-zipkin-data-dashboard?orgId=1) is created that just does a `select * from amqp_consumer` to show you your data.
+this is the frontend for writing queries and showing results in a pretty dashboard. You can access this [here](http://localhost:3000). Username and password are default (admin/admin). One data source is created pointing to influxdb. One [sample dashboard](http://localhost:3000/d/mt6nBMdWz/test-zipkin-data-dashboard?orgId=1) is created that just does a `select * from amqp_consumer` to show you your data.
 
 ## Use for Demo
 
