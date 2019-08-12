@@ -47,11 +47,15 @@ this is the frontend for writing queries and showing results in a pretty dashboa
 
 ## Use for Demo
 
-1. Publish a message to the queue using the rabbitmq admin interface. Any valid JSON string will do. Use this example as sample output from Zipkin:
+1. Publish a message to the queue using the rabbitmq admin interface. Any valid JSON string will do. example:
 ```json
-[{"traceId":"77c11db4a4474ad9","id":"77c11db4a4474ad9","kind":"SERVER","name":"get /v1/entities/{entityguid}/accounts","timestamp":1565377374580103,"duration":113553,"localEndpoint":{"serviceName":"disbursementprocessingservice","ipv4":"10.100.12.249"},"remoteEndpoint":{"ipv6":"::1","port":57748},"tags":{"http.method":"GET","http.path":"/v1/entities/0eb0adbd-331d-4b67-bd3e-b121d327272e/accounts","mvc.controller.class":"MerchantBankController","mvc.controller.method":"getBankAccounts"}}]
+[{"Value": 1}]
 ```
 2. View your results in Grafana test dashboard
+
+## Next Steps
+
+To get meaningful use out of the JSON data, you will need to configure telegraf to tell it which fields in your JSON are metrics vs. tags. By default numbers are measurements and strings are tags. Read more [here](https://github.com/influxdata/telegraf/tree/master/plugins/parsers/json)
 
 ## Authors
 
