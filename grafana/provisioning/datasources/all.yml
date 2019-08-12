@@ -1,0 +1,8 @@
+datasources:
+- name: 'InfluxDB'
+  type: 'influxdb'
+  access: 'proxy'
+  org_id: 1
+  url: 'http://influxdb:8086'
+  is_default: true
+  database: 'telegraf'

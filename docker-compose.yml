@@ -1,0 +1,45 @@
+version: '2.1'
+services:
+  influxdb:
+    container_name: influxdb
+    build: ./influxdb
+    ports:
+    - 8086:8086
+    volumes:
+    - influxdata:/var/lib/influxdb
+    healthcheck:
+      test: "curl -f http://localhost:8086/ping"
+      interval: 3s
+      timeout: 10s
+      retries: 5
+  rabbitmq:
+    container_name: rabbitmq
+    build: ./rabbitmq
+    ports:
+    - 15672:15672
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15672"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+  telegraf:
+    container_name: telegraf
+    build: ./telegraf
+    depends_on:
+      influxdb:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+  grafana:
+    container_name: grafana
+    ports:
+    - 3000:3000
+    build: ./grafana
+    #volumes:
+    #- grafanadata:/var/lib/grafana
+    depends_on:
+      influxdb:
+        condition: service_healthy
+volumes:
+  influxdata:
+  #grafanadata:
